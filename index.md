@@ -10,6 +10,7 @@ title: DevOps Interview Prep
 > 2. [Linux и сети — разжёвано для чайника](./linux-baza.html) — bash, процессы/потоки, сигналы, TCP/UDP, DNS, HTTP(S), файрволы, права, загрузка ОС
 > 3. [Kubernetes: под, сеть, Ingress, Gateway API, gRPC, балансировщики](./k8s-seti-balancery.html) — спавн пода по шагам, Service/сеть, nginx/HAProxy, логи и траблшутинг
 > 4. [Docker, DevOps-подходы, безопасность — основы](./osnovy.html) — что такое Docker/K8s/DevOps, GitOps, CI/CD, Dockerfile, шифрование vs хэширование
+> 5. [Блиц «в чём разница между…»](./raznitsa.html) — GET/POST, fork/pull, netstat/ss, roles/playbooks, syscall, privileged-контейнеры, ICMP и др.
 
 
 Шпаргалка по всем блокам вакансии: теория → типовые вопросы → сильные ответы → подвохи. Читай блок, потом идём в тренировку вопросами.
