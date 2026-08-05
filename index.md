@@ -14,6 +14,7 @@ title: DevOps Interview Prep
 > 3. [Kubernetes: под, сеть, Ingress, Gateway API, gRPC, балансировщики](./k8s-seti-balancery.html) — спавн пода по шагам, Service/сеть, nginx/HAProxy, логи и траблшутинг
 > 4. [Docker, DevOps-подходы, безопасность — основы](./osnovy.html) — что такое Docker/K8s/DevOps, GitOps, CI/CD, Dockerfile, шифрование vs хэширование
 > 5. [Блиц «в чём разница между…»](./raznitsa.html) — GET/POST, fork/pull, netstat/ss, roles/playbooks, syscall, privileged-контейнеры, ICMP и др.
+> 6. [300+ вопросов ITVDN с ответами](./itvdn-300.html) — полный список вопросов Junior/Middle/Senior из статьи ITVDN, к каждому — короткий ответ для собеса + разбор для чайника
 
 **Как отвечать на собесе (общие правила):**
 
