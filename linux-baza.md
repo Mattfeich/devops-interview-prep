@@ -413,6 +413,24 @@ smartctl -a /dev/sda        # здоровье самого диска
 ```
 Читаем: **await** растёт при том же трафике — диску плохо или он перегружен; `%util` 100% на NVMe — ещё не приговор (параллелизм); место есть, а писать нельзя — иноды или lsof +L1.
 
+**Кто сколько потребляет — по процессам и сервисам** (аналог `kubectl top`, но для обычной машины):
+
+```bash
+ps aux --sort=-%cpu | head -15   # топ процессов по CPU (разово)
+ps aux --sort=-rss  | head -15   # топ по памяти
+pidstat 1                        # по процессам в динамике (-r память, -d диск, -t потоки)
+systemd-cgtop                    # «top по сервисам»: CPU/память/IO каждого systemd-юнита
+systemctl status nginx           # строки Memory: и CPU: — сколько съел сервис целиком
+nethogs                          # топ по СЕТЕВОМУ трафику процессов
+iftop                            # трафик по соединениям/хостам
+```
+
+`systemd-cgtop` работает потому, что systemd кладёт каждый сервис в свою cgroup — потребление считается на сервис **со всеми дочерними процессами**, а не на один PID (то же можно прочитать руками: `/sys/fs/cgroup/system.slice/nginx.service/memory.current`, `cpu.stat`).
+
+**История — «а кто съел CPU ночью?»:** `atop` как сервис пишет снапшоты каждые 10 минут — `atop -r /var/log/atop/atop_YYYYMMDD`, листаешь по времени клавишами `t`/`T`; `sar` (sysstat) — исторические метрики системы целиком; по-взрослому — node_exporter + process-exporter в Prometheus.
+
+Логика ответа на собесе: **система целиком** (top, vmstat, iostat, free) → **виновник** (pidstat, iotop, nethogs, systemd-cgtop) → **история** (atop, sar, Prometheus).
+
 ### 4.3 iptables, nftables, firewalld — как это всё соотносится
 
 **Суть:** файрвол в Linux — это подсистема ядра **netfilter**. iptables и nftables — два поколения инструментов управления ею, firewalld — надстройка-менеджер поверх них.
